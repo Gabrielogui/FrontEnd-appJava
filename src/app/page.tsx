@@ -1,5 +1,9 @@
+import Cabecalho from "@/components/Cabecalho";
+
 export default function Home() {
   return (
-    <div></div>
+    <div>
+      <Cabecalho/>
+    </div>
   );
 }
