@@ -1,49 +1,16 @@
-"use client" // Usar por conta dos 'Uses' -> UseState, UseEffect, etc.
-
 import Cabecalho from "@/components/Cabecalho";
-import { Lista } from "@/core/lista";
-import { getListaGame } from "@/services/listaGame";
-import { useEffect, useState } from "react";
+import CartaoTipos from "@/components/CartaoTipos";
+
 
 export default function Home() {
 
-  // |=======| USE STATE |=======|
-  const [ lista, setLista ] = useState<Lista[] | undefined>([]);
-
-  // |=======| USE EFFECT |=======|
-  useEffect( () => {
-    const fetchData = async () => {
-      const dados = await getListaGame()
-      console.log("Dados: ", dados)
-      setLista(dados)
-    }
-
-    fetchData()
-  }, [])
-
   // |=======| RETURN |=======|
   return (
-    <div>
+    <div className="flex flex-col h-screen bg-emerald-900">
       <Cabecalho/>
 
-      <div className="bg-green-300">
-        {lista && lista.length > 0
-          ?
-          (
-            <ul>
-              {lista.map( (lista, index) => (
-                <div key={index}>
-                  <span>{lista.name}</span>
-                </div>
-              ))}
-            </ul>
-          )
-          :
-          (
-            <p>Carregando lista...</p>
-          )
-        
-        }
+      <div className="flex flex-col flex-1 bg-slate-300 p-4">
+        <CartaoTipos />
       </div>
 
     </div>
