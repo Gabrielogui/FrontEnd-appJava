@@ -36,7 +36,7 @@ export default function CartaoTipos() {
             "
         >
             {listas?.map((lista) => (
-                <Link className="" key={lista.id} href={`/lists/${lista.id}`}>
+                <Link className="" key={lista.id} href={`/lista/${lista.id}`}>
                     <span
                         className="
                         flex items-center
