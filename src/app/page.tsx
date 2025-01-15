@@ -1,13 +1,11 @@
-import Cabecalho from "@/components/Cabecalho";
 import CartaoTipos from "@/components/CartaoTipos";
-
 
 export default function Home() {
 
   // |=======| RETURN |=======|
   return (
     <div className="flex flex-col h-screen bg-emerald-900">
-      <Cabecalho/>
+      
 
       <div className="flex flex-col flex-1 bg-slate-300 p-4">
         <CartaoTipos />
