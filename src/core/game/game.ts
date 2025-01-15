@@ -1,8 +1,8 @@
 export default interface Game{
     id: number;
-    titulo: string;
-    ano: number;
-    utlImage: string;
-    descricaoCurta: string;
+    title: string;
+    year: number;
+    imgUrl: string;
+    shortDescription: string;
 
 }
