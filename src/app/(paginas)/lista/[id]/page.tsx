@@ -5,6 +5,8 @@ import { FocusCards } from "@/components/ui/focus-cards";
 import { Game } from "@/core/game";
 import { getGames } from "@/services/games";
 import { use, useEffect, useState } from "react";
+import { IconLoader3 } from "@tabler/icons-react"
+
 
 interface Cartao {
   title: string,
@@ -50,7 +52,8 @@ export default function Page(props:any){
     <div>
             {
               carregando ? (
-                <p>Carregando jogos...</p>
+                <p className="flex items-center justify-center mt-5"><span className="text-2xl">Carregando...</span>
+                &nbsp; &nbsp;  <IconLoader3 size={50} className="animate-spin"/> </p>
               ) : (
 
                 jogos.length === 0 ? (
