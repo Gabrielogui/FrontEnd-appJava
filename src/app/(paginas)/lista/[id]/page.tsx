@@ -16,10 +16,14 @@ export default function Page(props:any){
   const params = use(props.params); // Desembrulhando a Promise de params
   const [jogos, setJogos] = useState<Game[]>([]);
   const [cartoes, setCartoes] = useState<Cartao[]>([]);
+  const [carregando, setCarregando] = useState(true);
+
 
   useEffect(() => {
       const fetchJogos = async () => {
           try {
+              setCarregando(true)
+
               const listaJogos: Game[] = await getGames(params.id); // Aguardando a resposta da API
               setJogos(listaJogos);
 
@@ -32,6 +36,8 @@ export default function Page(props:any){
           } catch (error) {
               console.error("Erro ao buscar jogos:", error);
               setJogos([]); // Optional: Reset games if there was an error
+          } finally {
+              setCarregando(false)
           }
       };
 
@@ -42,14 +48,17 @@ export default function Page(props:any){
 
   return (
     <div>
-            <p>{params.id}</p>
             {
+              carregando ? (
+                <p>Carregando jogos...</p>
+              ) : (
+
                 jogos.length === 0 ? (
                     <p>Nenhum jogo encontrado.</p>
                 ) : (
                     <FocusCards cards={cartoes} />
-
                 )
+              )
             }
         </div>
   );
