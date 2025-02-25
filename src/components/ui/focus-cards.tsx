@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
+import { Drawer, DrawerContent, DrawerDescription, DrawerTitle, DrawerTrigger } from "./drawer";
 
 export const Card = React.memo(
   ({
@@ -56,13 +57,21 @@ export function FocusCards({ cards }: { cards: Card[] }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto md:px-8 w-full">
       {cards.map((card, index) => (
-        <Card
-          key={card.title}
-          card={card}
-          index={index}
-          hovered={hovered}
-          setHovered={setHovered}
-        />
+        <Drawer key={card.title}>
+          <DrawerTrigger>
+            <Card
+              key={card.title}
+              card={card}
+              index={index}
+              hovered={hovered}
+              setHovered={setHovered}
+            />
+          </DrawerTrigger>
+          <DrawerContent>
+            <DrawerTitle>{card.title}</DrawerTitle>
+            <DrawerDescription>{card.src}</DrawerDescription>
+          </DrawerContent>
+        </Drawer>
       ))}
     </div>
   );
