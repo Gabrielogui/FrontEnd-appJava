@@ -49,6 +49,7 @@ Card.displayName = "Card";
 type Card = {
   title: string;
   src: string;
+  shortDescription: string
 };
 
 export function FocusCards({ cards }: { cards: Card[] }) {
@@ -67,9 +68,9 @@ export function FocusCards({ cards }: { cards: Card[] }) {
               setHovered={setHovered}
             />
           </DrawerTrigger>
-          <DrawerContent>
-            <DrawerTitle>{card.title}</DrawerTitle>
-            <DrawerDescription>{card.src}</DrawerDescription>
+          <DrawerContent className="px-8 h-[50%]">
+            <DrawerTitle className="mx-auto">{card.title}</DrawerTitle>
+            <DrawerDescription>{card.shortDescription}</DrawerDescription>
           </DrawerContent>
         </Drawer>
       ))}

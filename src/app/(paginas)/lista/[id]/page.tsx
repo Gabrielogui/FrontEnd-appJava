@@ -33,6 +33,7 @@ export default function Page(props:any){
                   listaJogos.map((jogo: Game) => ({
                       title: jogo.title,
                       src: jogo.imgUrl,
+                      shortDescription: jogo.shortDescription,
                   }))
               )
           } catch (error) {
